@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Campaign Marketplace</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>Welcome, <span id="user-name">User</span>!</h1>
+            <button class="logout-btn" id="logout-btn">Logout</button>
+        </div>
+
+        <div id="dashboard-message"></div>
+
+        <div class="user-info">
+            <p><strong>Email:</strong> <span id="user-email"></span></p>
+            <p><strong>Role:</strong> <span id="user-role" style="text-transform: capitalize;"></span></p>
+        </div>
+
+        <div class="content">
+            <div id="brand-section" style="display: none;">
+                <h2>Create New Campaign</h2>
+                <form id="campaign-form">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" required placeholder="Campaign Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" required placeholder="Describe the campaign"
+                            style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; box-sizing: border-box;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget ($)</label>
+                        <input type="number" id="budget" required placeholder="500">
+                    </div>
+                    <button type="submit">Create Campaign</button>
+                </form>
+                <div id="campaign-message"></div>
+            </div>
+
+            <div id="campaign-list-section">
+                <h2 id="list-title">Available Campaigns</h2>
+                <div id="campaign-list" class="campaign-grid">
+                    <p>Loading campaigns...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
