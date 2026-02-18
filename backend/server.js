@@ -13,6 +13,7 @@ connectDB();
 // Import routes
 const auth = require('./routes/authRoutes');
 const campaign = require('./routes/campaignRoutes');
+const path = require('path');
 
 const app = express();
 
@@ -20,13 +21,21 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // Enable CORS for frontend connectivity
 
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 // Mount routes
 app.use('/api/auth', auth);
 app.use('/api/campaign', campaign);
 
 // API Health Check
-app.get('/', (req, res) => {
+app.get('/api/health', (req, res) => {
     res.send('Campaign Marketplace API is running...');
+});
+
+// Root route - redirect to registration page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/register.html'));
 });
 
 // Centralized error handling

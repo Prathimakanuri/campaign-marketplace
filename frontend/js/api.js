@@ -1,5 +1,8 @@
-// Base URL for the backend API - ensure this matches your server port
-const API_URL = 'http://localhost:5000/api';
+// Derive the API URL - works for both local and live hosting
+const API_URL = window.location.origin.includes('localhost') && !window.location.port
+    ? 'http://localhost:5000/api'
+    : window.location.origin + '/api';
+
 
 /**
  * Universal helper for making Fetch API requests to the backend
